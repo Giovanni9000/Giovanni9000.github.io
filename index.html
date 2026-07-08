@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giovanni Boni — Fullstack Developer & AI Automation Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a0a;
+  --yellow: #f5f500;
+  --magenta: #ff3cac;
+  --cyan: #00e5ff;
+  --white: #f5f4f0;
+  --gray: #888884;
+  --card-bg: #141414;
+  --card-border: #222220;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2.5rem;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--yellow);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s;
+  font-family: var(--font-body);
+}
+
+.nav-links a:hover { color: var(--white); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 2.5rem 4rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50% 40% 60% 30% / 40% 60% 30% 70%;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob-1 {
+  width: 420px; height: 380px;
+  background: var(--yellow);
+  top: 10%; right: -80px;
+  animation: drift 14s ease-in-out infinite alternate;
+}
+
+.blob-2 {
+  width: 300px; height: 340px;
+  background: var(--magenta);
+  bottom: 15%; left: -60px;
+  border-radius: 30% 60% 40% 70% / 60% 30% 70% 40%;
+  animation: drift 18s ease-in-out infinite alternate-reverse;
+}
+
+.blob-3 {
+  width: 180px; height: 200px;
+  background: var(--cyan);
+  top: 30%; left: 60%;
+  border-radius: 60% 30% 50% 40% / 30% 70% 40% 60%;
+  animation: drift 22s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  from { transform: translate(0, 0) rotate(0deg); }
+  to { transform: translate(20px, 30px) rotate(8deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob { animation: none; }
+}
+
+.hero-content { position: relative; z-index: 1; }
+
+.hero-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--cyan);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-body);
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.5rem;
+  color: var(--white);
+}
+
+.hero h1 .hl-yellow { color: var(--yellow); }
+.hero h1 .hl-magenta { color: var(--magenta); }
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--gray);
+  max-width: 540px;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.18s;
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-body);
+}
+
+.btn-yellow {
+  background: var(--yellow);
+  color: #0a0a0a;
+}
+
+.btn-yellow:hover {
+  background: #ffff33;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--card-border);
+}
+
+.btn-outline:hover {
+  border-color: var(--gray);
+  transform: translateY(-2px);
+}
+
+/* SECTIONS */
+.section-wrap {
+  padding: 6rem 2.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--yellow);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-body);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+  color: var(--white);
+}
+
+.section-intro {
+  color: var(--gray);
+  font-size: 1rem;
+  max-width: 520px;
+  margin-bottom: 3rem;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--card-border);
+}
+
+/* PROJECTS GRID */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.25rem;
+}
+
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1.75rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.project-card.yellow::after { box-shadow: inset 0 0 0 1.5px var(--yellow); }
+.project-card.magenta::after { box-shadow: inset 0 0 0 1.5px var(--magenta); }
+.project-card.cyan::after { box-shadow: inset 0 0 0 1.5px var(--cyan); }
+
+.project-card:hover { transform: translateY(-4px); }
+.project-card:hover::after { opacity: 1; }
+
+.project-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.dot-yellow { background: var(--yellow); }
+.dot-magenta { background: var(--magenta); }
+.dot-cyan { background: var(--cyan); }
+
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.project-number {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--gray);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-body);
+}
+
+.project-type {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  font-family: var(--font-body);
+}
+
+.type-ai { background: rgba(245,245,0,0.1); color: var(--yellow); }
+.type-fullstack { background: rgba(0,229,255,0.1); color: var(--cyan); }
+
+.project-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
+.project-desc {
+  color: var(--gray);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 1.25rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+}
+
+.tag {
+  background: rgba(255,255,255,0.05);
+  color: var(--gray);
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  border: 1px solid var(--card-border);
+  font-family: var(--font-body);
+}
+
+.project-links {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.project-link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--gray);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color 0.2s;
+  font-family: var(--font-body);
+}
+
+.project-link:hover { color: var(--white); }
+.project-link::after { content: '↗'; font-size: 0.75rem; }
+
+.project-link.live { color: var(--cyan); }
+.project-link.live:hover { color: #33eeff; }
+
+/* SKILLS */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.skill-group {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.skill-group-title {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--yellow);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+  font-family: var(--font-body);
+}
+
+.skill-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.skill-list li {
+  font-size: 0.875rem;
+  color: var(--gray);
+  font-family: var(--font-body);
+  transition: color 0.15s;
+}
+
+.skill-list li:hover { color: var(--white); }
+
+/* ABOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-text p {
+  color: var(--gray);
+  margin-bottom: 1rem;
+  font-size: 0.975rem;
+  line-height: 1.8;
+}
+
+.about-text strong { color: var(--white); font-weight: 500; }
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--yellow);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.stat-label {
+  font-size: 0.775rem;
+  color: var(--gray);
+  font-weight: 500;
+  font-family: var(--font-body);
+  line-height: 1.4;
+}
+
+/* CONTACT */
+.contact-inner {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-blob {
+  position: absolute;
+  width: 300px; height: 300px;
+  border-radius: 50% 40% 60% 30% / 40% 60% 30% 70%;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.contact-blob-1 { background: var(--yellow); top: -80px; right: -60px; }
+.contact-blob-2 { background: var(--magenta); bottom: -80px; left: -60px; }
+
+.contact-inner .section-label { position: relative; z-index: 1; }
+.contact-inner .section-title { position: relative; z-index: 1; }
+
+.contact-inner p {
+  color: var(--gray);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--card-border);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--card-border);
+  font-family: var(--font-body);
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  nav { padding: 1rem 1.25rem; }
+  .nav-links { display: none; }
+  .hero { padding: 7rem 1.25rem 3rem; }
+  .section-wrap { padding: 4rem 1.25rem; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .contact-inner { padding: 2.5rem 1.5rem; }
+  .blob-1 { width: 250px; right: -100px; }
+  .blob-2 { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">GB.</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="blob blob-1" aria-hidden="true"></div>
+  <div class="blob blob-2" aria-hidden="true"></div>
+  <div class="blob blob-3" aria-hidden="true"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Fullstack Developer &amp; AI Automation Engineer · Pretoria, SA</p>
+    <h1>I build things<br>that <span class="hl-yellow">think</span> for<br><span class="hl-magenta">themselves.</span></h1>
+    <p class="hero-sub">
+      MERN stack developer and AI automation engineer. I build workflows that 
+      classify emails, answer support questions, enrich sales leads, and diagnose 
+      their own failures — using n8n, Claude, and Node.js.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-yellow">View my work</a>
+      <a href="https://github.com/Giovanni9000" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+      <a href="https://www.linkedin.com/in/giovanni-boni" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section class="section-wrap" id="projects">
+  <p class="section-label">Portfolio</p>
+  <h2 class="section-title">Things I've shipped</h2>
+  <p class="section-intro">Five end-to-end builds across fullstack web dev and AI automation — each one solving a real business problem.</p>
+
+  <div class="projects-grid">
+
+    <div class="project-card yellow">
+      <div class="project-meta">
+        <span class="project-number">Project 00</span>
+        <span class="project-type type-fullstack">Fullstack · Capstone</span>
+      </div>
+      <div class="project-dot dot-yellow"></div>
+      <h3 class="project-title">Airbnb clone — full MERN capstone</h3>
+      <p class="project-desc">
+        Full-stack Airbnb-style accommodation platform built to Figma spec. 
+        Features JWT authentication, listing CRUD, reservation management, 
+        image uploads, cost calculator, admin dashboard, and responsive design. 
+        Submitted as final capstone at ZAIO bootcamp.
+      </p>
+      <div class="project-tags">
+        <span class="tag">React</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Express</span>
+        <span class="tag">MongoDB</span>
+        <span class="tag">JWT Auth</span>
+        <span class="tag">Netlify</span>
+        <span class="tag">Render</span>
+      </div>
+      <div class="project-links">
+        <a href="https://amazing-elf-290f20.netlify.app/" target="_blank" rel="noopener" class="project-link live">Live site</a>
+        <a href="https://sunny-kleicha-d7d19c.netlify.app/login" target="_blank" rel="noopener" class="project-link live">Admin panel</a>
+        <a href="https://github.com/Giovanni9000/airbnb-clone" target="_blank" rel="noopener" class="project-link">GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card magenta">
+      <div class="project-meta">
+        <span class="project-number">Project 01</span>
+        <span class="project-type type-ai">AI Automation</span>
+      </div>
+      <div class="project-dot dot-magenta"></div>
+      <h3 class="project-title">AI email triage agent</h3>
+      <p class="project-desc">
+        Watches a Gmail inbox, classifies each email using Claude (urgent / sales lead / 
+        support / spam), drafts a suggested reply, and routes it automatically — 
+        Slack alert, Google Sheets log, or support queue. Explicit fallback 
+        handling for unmatched cases.
+      </p>
+      <div class="project-tags">
+        <span class="tag">n8n</span>
+        <span class="tag">Claude API</span>
+        <span class="tag">Gmail API</span>
+        <span class="tag">Slack API</span>
+        <span class="tag">Google Sheets</span>
+        <span class="tag">Conditional routing</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Giovanni9000/AI-Email-Triage-Agent" target="_blank" rel="noopener" class="project-link">GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card cyan">
+      <div class="project-meta">
+        <span class="project-number">Project 02</span>
+        <span class="project-type type-ai">AI Automation</span>
+      </div>
+      <div class="project-dot dot-cyan"></div>
+      <h3 class="project-title">AI customer support agent — Trackly</h3>
+      <p class="project-desc">
+        Conversational support bot with session memory and a Google Sheets 
+        knowledge-base tool. Built to demonstrate the difference between a 
+        hallucinating chatbot and one grounded in real data — the agent invented 
+        a "Pirate plan" before the FAQ tool was connected. Deployed as a live 
+        public chat endpoint.
+      </p>
+      <div class="project-tags">
+        <span class="tag">n8n AI Agent</span>
+        <span class="tag">OpenRouter</span>
+        <span class="tag">RAG</span>
+        <span class="tag">Session memory</span>
+        <span class="tag">Google Sheets</span>
+        <span class="tag">Webhooks</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Giovanni9000/AI-Support-Agent-Trackly" target="_blank" rel="noopener" class="project-link">GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card yellow">
+      <div class="project-meta">
+        <span class="project-number">Project 03</span>
+        <span class="project-type type-ai">AI Automation</span>
+      </div>
+      <div class="project-dot dot-yellow"></div>
+      <h3 class="project-title">AI lead enrichment pipeline</h3>
+      <p class="project-desc">
+        Takes a raw company name, searches for live information using the Tavily API, 
+        scores and summarises lead fit using an LLM, and logs enriched results to 
+        a Google Sheet. Turns a 30-minute manual research task into a 10-second 
+        automated one.
+      </p>
+      <div class="project-tags">
+        <span class="tag">Node.js</span>
+        <span class="tag">Tavily API</span>
+        <span class="tag">OpenRouter</span>
+        <span class="tag">Google Sheets API</span>
+        <span class="tag">LLM scoring</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Giovanni9000/AI-Lead-Enrichment-Tool" target="_blank" rel="noopener" class="project-link">GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card magenta">
+      <div class="project-meta">
+        <span class="project-number">Project 04</span>
+        <span class="project-type type-ai">AI Automation</span>
+      </div>
+      <div class="project-dot dot-magenta"></div>
+      <h3 class="project-title">Self-healing reporting pipeline</h3>
+      <p class="project-desc">
+        A scheduled Node.js pipeline that fetches sales data and generates HTML 
+        reports. When something breaks — bad data, API failure, malformed response — 
+        it sends the error to an LLM and logs a plain-English diagnosis instead of 
+        a raw stack trace. Built with documented GitHub Copilot assistance.
+      </p>
+      <div class="project-tags">
+        <span class="tag">Node.js</span>
+        <span class="tag">node-cron</span>
+        <span class="tag">OpenRouter</span>
+        <span class="tag">GitHub Copilot</span>
+        <span class="tag">Error handling</span>
+        <span class="tag">LLM diagnosis</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Giovanni9000/self-healing-pipeline" target="_blank" rel="noopener" class="project-link">GitHub</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section class="section-wrap" id="skills">
+  <p class="section-label">Capabilities</p>
+  <h2 class="section-title">What I work with</h2>
+  <p class="section-intro">Trained across the full MERN stack at ZAIO, extended into AI automation and LLM integration through self-directed projects.</p>
+
+  <div class="skills-grid">
+    <div class="skill-group">
+      <p class="skill-group-title">Frontend</p>
+      <ul class="skill-list">
+        <li>React.js</li>
+        <li>JavaScript (ES6+)</li>
+        <li>HTML &amp; CSS</li>
+        <li>Redux</li>
+        <li>React Hooks</li>
+        <li>Responsive design</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Backend</p>
+      <ul class="skill-list">
+        <li>Node.js</li>
+        <li>Express.js</li>
+        <li>MongoDB &amp; Mongoose</li>
+        <li>REST APIs</li>
+        <li>JWT authentication</li>
+        <li>Python</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">AI &amp; Automation</p>
+      <ul class="skill-list">
+        <li>n8n</li>
+        <li>Claude (Anthropic)</li>
+        <li>Prompt engineering</li>
+        <li>OpenRouter</li>
+        <li>AI Agents / RAG</li>
+        <li>LLM tool-calling</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Integrations</p>
+      <ul class="skill-list">
+        <li>Gmail API</li>
+        <li>Slack API</li>
+        <li>Google Sheets API</li>
+        <li>Tavily Search API</li>
+        <li>Webhooks</li>
+        <li>Postman</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Tools &amp; Deployment</p>
+      <ul class="skill-list">
+        <li>Git &amp; GitHub</li>
+        <li>GitHub Copilot</li>
+        <li>VS Code</li>
+        <li>Netlify</li>
+        <li>Render</li>
+        <li>MongoDB Atlas</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="section-wrap" id="about">
+  <p class="section-label">Background</p>
+  <h2 class="section-title">The full picture</h2>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm a fullstack developer trained at <strong>ZAIO</strong>, where I built 
+        production-style projects across the MERN stack — from landing pages and REST APIs 
+        to my Airbnb clone capstone project with full auth, CRUD, and deployment.
+      </p>
+      <p>
+        Alongside web dev, I've been building a portfolio of <strong>AI automation 
+        projects</strong> using n8n and LLM APIs — workflows that solve real business 
+        problems like inbox overload, support scaling, and manual lead research.
+      </p>
+      <p>
+        Before tech, I spent time in <strong>financial advisory</strong> (Liberty Group), 
+        <strong>customer experience and logistics</strong> (Farming In Africa, Ghana), 
+        and agricultural operations. That background gives me something most junior 
+        devs don't: I've seen what broken manual processes look like from the inside, 
+        which is exactly why automation matters.
+      </p>
+      <p>
+        Based in <strong>Pretoria, South Africa</strong>. Open to remote roles globally 
+        and hybrid roles in Pretoria.
+      </p>
+    </div>
+
+    <div class="about-stats">
+      <div class="stat-card">
+        <p class="stat-number">5</p>
+        <p class="stat-label">Projects shipped and deployed</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-number">8+</p>
+        <p class="stat-label">APIs integrated across projects</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-number">MERN</p>
+        <p class="stat-label">Full-stack trained at ZAIO</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-number">ZA</p>
+        <p class="stat-label">Remote-ready, Pretoria based</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="section-wrap" id="contact">
+  <div class="contact-inner">
+    <div class="contact-blob contact-blob-1" aria-hidden="true"></div>
+    <div class="contact-blob contact-blob-2" aria-hidden="true"></div>
+    <p class="section-label">Get in touch</p>
+    <h2 class="section-title" style="margin-bottom:0.75rem;">Open to work</h2>
+    <p>Looking for fullstack developer or AI automation specialist roles.<br>Remote preferred — open to hybrid in Pretoria.</p>
+    <div class="contact-links">
+      <a href="mailto:giovanniboni34@gmail.com" class="btn btn-yellow">Send an email</a>
+      <a href="https://www.linkedin.com/in/giovanni-boni" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+      <a href="https://github.com/Giovanni9000" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built by Giovanni Boni · 2026</p>
+</footer>
+
+</body>
+</html>

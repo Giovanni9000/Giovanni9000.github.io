@@ -35,7 +35,6 @@ body {
   overflow-x: hidden;
 }
 
-/* NAV */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -75,7 +74,6 @@ nav {
 
 .nav-links a:hover { color: var(--white); }
 
-/* HERO */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -202,7 +200,6 @@ nav {
   transform: translateY(-2px);
 }
 
-/* SECTIONS */
 .section-wrap {
   padding: 6rem 2.5rem;
   max-width: 1000px;
@@ -242,7 +239,6 @@ nav {
   background: var(--card-border);
 }
 
-/* PROJECTS GRID */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -373,11 +369,9 @@ nav {
 
 .project-link:hover { color: var(--white); }
 .project-link::after { content: '↗'; font-size: 0.75rem; }
-
 .project-link.live { color: var(--cyan); }
 .project-link.live:hover { color: #33eeff; }
 
-/* SKILLS */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -417,7 +411,6 @@ nav {
 
 .skill-list li:hover { color: var(--white); }
 
-/* ABOUT */
 .about-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -465,7 +458,6 @@ nav {
   line-height: 1.4;
 }
 
-/* CONTACT */
 .contact-inner {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -487,7 +479,7 @@ nav {
 .contact-blob-1 { background: var(--yellow); top: -80px; right: -60px; }
 .contact-blob-2 { background: var(--magenta); bottom: -80px; left: -60px; }
 
-.contact-inner .section-label { position: relative; z-index: 1; }
+.contact-inner .section-label,
 .contact-inner .section-title { position: relative; z-index: 1; }
 
 .contact-inner p {
@@ -507,7 +499,6 @@ nav {
   z-index: 1;
 }
 
-/* FOOTER */
 footer {
   text-align: center;
   padding: 2rem;
@@ -517,7 +508,6 @@ footer {
   font-family: var(--font-body);
 }
 
-/* RESPONSIVE */
 @media (max-width: 700px) {
   nav { padding: 1rem 1.25rem; }
   .nav-links { display: none; }
@@ -543,7 +533,6 @@ footer {
   </ul>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="blob blob-1" aria-hidden="true"></div>
   <div class="blob blob-2" aria-hidden="true"></div>
@@ -552,9 +541,7 @@ footer {
     <p class="hero-eyebrow">Fullstack Developer &amp; AI Automation Engineer · Pretoria, SA</p>
     <h1>I build things<br>that <span class="hl-yellow">think</span> for<br><span class="hl-magenta">themselves.</span></h1>
     <p class="hero-sub">
-      MERN stack developer and AI automation engineer. I build workflows that 
-      classify emails, answer support questions, enrich sales leads, and diagnose 
-      their own failures — using n8n, Claude, and Node.js.
+      MERN stack developer who also builds AI automation workflows. Things like email classifiers, support bots, lead research tools and pipelines that tell you what broke instead of just crashing.
     </p>
     <div class="hero-actions">
       <a href="#projects" class="btn btn-yellow">View my work</a>
@@ -566,11 +553,10 @@ footer {
 
 <div class="divider"></div>
 
-<!-- PROJECTS -->
 <section class="section-wrap" id="projects">
   <p class="section-label">Portfolio</p>
   <h2 class="section-title">Things I've shipped</h2>
-  <p class="section-intro">Five end-to-end builds across fullstack web dev and AI automation — each one solving a real business problem.</p>
+  <p class="section-intro">Five projects across fullstack web dev and AI automation. All deployed, all real.</p>
 
   <div class="projects-grid">
 
@@ -580,12 +566,9 @@ footer {
         <span class="project-type type-fullstack">Fullstack · Capstone</span>
       </div>
       <div class="project-dot dot-yellow"></div>
-      <h3 class="project-title">Airbnb clone — full MERN capstone</h3>
+      <h3 class="project-title">Airbnb clone</h3>
       <p class="project-desc">
-        Full-stack Airbnb-style accommodation platform built to Figma spec. 
-        Features JWT authentication, listing CRUD, reservation management, 
-        image uploads, cost calculator, admin dashboard, and responsive design. 
-        Submitted as final capstone at ZAIO bootcamp.
+        Full-stack accommodation platform I built as my bootcamp capstone at ZAIO, matched to a Figma design. Has JWT auth, listing and reservation management, image uploads, a cost calculator and a separate admin dashboard. Frontend on Netlify, backend on Render, database on MongoDB Atlas.
       </p>
       <div class="project-tags">
         <span class="tag">React</span>
@@ -611,10 +594,7 @@ footer {
       <div class="project-dot dot-magenta"></div>
       <h3 class="project-title">AI email triage agent</h3>
       <p class="project-desc">
-        Watches a Gmail inbox, classifies each email using Claude (urgent / sales lead / 
-        support / spam), drafts a suggested reply, and routes it automatically — 
-        Slack alert, Google Sheets log, or support queue. Explicit fallback 
-        handling for unmatched cases.
+        An n8n workflow that reads incoming Gmail, classifies each email using Claude (urgent, sales lead, support or spam), drafts a suggested reply and sends it to the right place. Urgent emails hit Slack, leads go to a Google Sheet, support gets queued. Anything else gets archived.
       </p>
       <div class="project-tags">
         <span class="tag">n8n</span>
@@ -622,7 +602,6 @@ footer {
         <span class="tag">Gmail API</span>
         <span class="tag">Slack API</span>
         <span class="tag">Google Sheets</span>
-        <span class="tag">Conditional routing</span>
       </div>
       <div class="project-links">
         <a href="https://github.com/Giovanni9000/AI-Email-Triage-Agent" target="_blank" rel="noopener" class="project-link">GitHub</a>
@@ -635,13 +614,9 @@ footer {
         <span class="project-type type-ai">AI Automation</span>
       </div>
       <div class="project-dot dot-cyan"></div>
-      <h3 class="project-title">AI customer support agent — Trackly</h3>
+      <h3 class="project-title">AI customer support agent</h3>
       <p class="project-desc">
-        Conversational support bot with session memory and a Google Sheets 
-        knowledge-base tool. Built to demonstrate the difference between a 
-        hallucinating chatbot and one grounded in real data — the agent invented 
-        a "Pirate plan" before the FAQ tool was connected. Deployed as a live 
-        public chat endpoint.
+        A support chatbot for a fictional SaaS product called Trackly. It has session memory and pulls answers from a Google Sheets FAQ before responding. Before I connected the FAQ, it confidently told a user about the "Pirate plan" which I definitely never built. That's hallucination. Connecting real data fixed it.
       </p>
       <div class="project-tags">
         <span class="tag">n8n AI Agent</span>
@@ -649,7 +624,6 @@ footer {
         <span class="tag">RAG</span>
         <span class="tag">Session memory</span>
         <span class="tag">Google Sheets</span>
-        <span class="tag">Webhooks</span>
       </div>
       <div class="project-links">
         <a href="https://github.com/Giovanni9000/AI-Support-Agent-Trackly" target="_blank" rel="noopener" class="project-link">GitHub</a>
@@ -664,17 +638,13 @@ footer {
       <div class="project-dot dot-yellow"></div>
       <h3 class="project-title">AI lead enrichment pipeline</h3>
       <p class="project-desc">
-        Takes a raw company name, searches for live information using the Tavily API, 
-        scores and summarises lead fit using an LLM, and logs enriched results to 
-        a Google Sheet. Turns a 30-minute manual research task into a 10-second 
-        automated one.
+        You give it a company name. It searches the web using Tavily, sends the results to an LLM to score and summarise the lead, then logs everything to Google Sheets. What used to take 30 minutes of manual Googling takes about 10 seconds now.
       </p>
       <div class="project-tags">
         <span class="tag">Node.js</span>
         <span class="tag">Tavily API</span>
         <span class="tag">OpenRouter</span>
         <span class="tag">Google Sheets API</span>
-        <span class="tag">LLM scoring</span>
       </div>
       <div class="project-links">
         <a href="https://github.com/Giovanni9000/AI-Lead-Enrichment-Tool" target="_blank" rel="noopener" class="project-link">GitHub</a>
@@ -689,10 +659,7 @@ footer {
       <div class="project-dot dot-magenta"></div>
       <h3 class="project-title">Self-healing reporting pipeline</h3>
       <p class="project-desc">
-        A scheduled Node.js pipeline that fetches sales data and generates HTML 
-        reports. When something breaks — bad data, API failure, malformed response — 
-        it sends the error to an LLM and logs a plain-English diagnosis instead of 
-        a raw stack trace. Built with documented GitHub Copilot assistance.
+        A scheduled Node.js pipeline that fetches sales data and generates HTML reports. When it breaks, instead of throwing a stack trace nobody reads, it sends the error to an LLM and logs a plain English explanation of what went wrong. Parts of this were written with GitHub Copilot and I documented exactly where.
       </p>
       <div class="project-tags">
         <span class="tag">Node.js</span>
@@ -700,7 +667,6 @@ footer {
         <span class="tag">OpenRouter</span>
         <span class="tag">GitHub Copilot</span>
         <span class="tag">Error handling</span>
-        <span class="tag">LLM diagnosis</span>
       </div>
       <div class="project-links">
         <a href="https://github.com/Giovanni9000/self-healing-pipeline" target="_blank" rel="noopener" class="project-link">GitHub</a>
@@ -712,11 +678,10 @@ footer {
 
 <div class="divider"></div>
 
-<!-- SKILLS -->
 <section class="section-wrap" id="skills">
   <p class="section-label">Capabilities</p>
   <h2 class="section-title">What I work with</h2>
-  <p class="section-intro">Trained across the full MERN stack at ZAIO, extended into AI automation and LLM integration through self-directed projects.</p>
+  <p class="section-intro">Trained across the full MERN stack at ZAIO and extended into AI automation through building real projects.</p>
 
   <div class="skills-grid">
     <div class="skill-group">
@@ -779,7 +744,6 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ABOUT -->
 <section class="section-wrap" id="about">
   <p class="section-label">Background</p>
   <h2 class="section-title">The full picture</h2>
@@ -787,25 +751,16 @@ footer {
   <div class="about-grid">
     <div class="about-text">
       <p>
-        I'm a fullstack developer trained at <strong>ZAIO</strong>, where I built 
-        production-style projects across the MERN stack — from landing pages and REST APIs 
-        to my Airbnb clone capstone project with full auth, CRUD, and deployment.
+        I trained at <strong>ZAIO</strong> where I built a bunch of MERN stack projects, the biggest being a full Airbnb clone built to spec and deployed across three platforms.
       </p>
       <p>
-        Alongside web dev, I've been building a portfolio of <strong>AI automation 
-        projects</strong> using n8n and LLM APIs — workflows that solve real business 
-        problems like inbox overload, support scaling, and manual lead research.
+        On the side I've been building AI automation workflows using <strong>n8n and various LLM APIs</strong>. The kind of stuff that saves someone a few hours a week by handling the repetitive parts automatically.
       </p>
       <p>
-        Before tech, I spent time in <strong>financial advisory</strong> (Liberty Group), 
-        <strong>customer experience and logistics</strong> (Farming In Africa, Ghana), 
-        and agricultural operations. That background gives me something most junior 
-        devs don't: I've seen what broken manual processes look like from the inside, 
-        which is exactly why automation matters.
+        Before I got into tech I worked in <strong>financial advisory</strong> at Liberty Group, did some logistics coordination work in <strong>Ghana</strong>, and spent time on a poultry farm. Bit of an unusual path but it means I've seen enough broken manual processes to know what's actually worth automating.
       </p>
       <p>
-        Based in <strong>Pretoria, South Africa</strong>. Open to remote roles globally 
-        and hybrid roles in Pretoria.
+        Based in <strong>Pretoria, South Africa</strong>. Happy to work fully remote or hybrid locally.
       </p>
     </div>
 
@@ -832,14 +787,13 @@ footer {
 
 <div class="divider"></div>
 
-<!-- CONTACT -->
 <section class="section-wrap" id="contact">
   <div class="contact-inner">
     <div class="contact-blob contact-blob-1" aria-hidden="true"></div>
     <div class="contact-blob contact-blob-2" aria-hidden="true"></div>
     <p class="section-label">Get in touch</p>
     <h2 class="section-title" style="margin-bottom:0.75rem;">Open to work</h2>
-    <p>Looking for fullstack developer or AI automation specialist roles.<br>Remote preferred — open to hybrid in Pretoria.</p>
+    <p>I'm looking for fullstack or AI automation roles, remote ideally but open to hybrid in Pretoria. Available now.</p>
     <div class="contact-links">
       <a href="mailto:giovanniboni34@gmail.com" class="btn btn-yellow">Send an email</a>
       <a href="https://www.linkedin.com/in/giovanni-boni" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
